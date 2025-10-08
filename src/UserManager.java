@@ -1,8 +1,9 @@
 import java.util.HashMap;
-
+import java.util.Scanner;
 
 public class UserManager {
     private HashMap<String, User> users = new HashMap<>();
+    private Scanner sc = new Scanner(System.in);
 
     //Add User
     public void addUser(String userName, String userPassword, String role) {
@@ -13,13 +14,31 @@ public class UserManager {
     }
 
     public void displayUser() {
-        for (User users : users.values()) {
-            System.out.println(users);
+        for (User user : users.values()) {
+            System.out.println(user);
         }
     }
 
-    public void removeUser() {
-
+    public void removeUser(String user) {
+        displayUser();
+        if (users.containsKey(user)) {
+            users.remove(user);
+            System.out.println("Removed Successfully!");
+        } else {
+            System.out.println("User not found.");
+        }
     }
 
+    public String loginMethod(String userName, String passWord, String role) {
+        User user = users.get(userName);
+
+        if (user != null && user.getUserPassword().equals(passWord)) {
+            System.out.println("Login Successfully. Welcome");
+            return user.getRole();
+        } else {
+            System.out.println("Login failed.");
+            return "none";
+        }
+
+    }
 }

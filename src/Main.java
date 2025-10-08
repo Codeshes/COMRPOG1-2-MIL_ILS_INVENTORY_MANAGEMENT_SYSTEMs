@@ -3,5 +3,9 @@ public class Main {
         InventoryManager manager = new InventoryManager();
         staffRequestManager requestManager = new staffRequestManager();
         UserManager userManager = new UserManager();
+        boolean loginRunning = true;
+
+
+
     }
 }

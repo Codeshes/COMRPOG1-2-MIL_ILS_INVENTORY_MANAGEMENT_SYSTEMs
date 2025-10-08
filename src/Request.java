@@ -1,21 +1,35 @@
 public class Request {
-    private String staffRequest;
-    private int requestId;
+    private static int counter = 100;  // Static counter to generate unique IDs
+    private int id;
+    private String itemName;
+    private double currentPrice;
+    private double proposedPrice;
+    private String reason;
 
-    Request(String staffRequest, int requestId) {
-        this.staffRequest = staffRequest;
-        this.requestId = requestId;
+
+    Request(String itemName, double currentPrice, double proposedPrice, String reason) {
+        this.id = counter++;
+        this.itemName = itemName;
+        this.currentPrice = currentPrice;
+        this.proposedPrice = proposedPrice;
+        this.reason = reason;
+
 
     }
 
-    public String getStaffRequest() { return staffRequest; }
-    public int getRequestId() { return requestId; }
-    public void setStaffRequest(String staffRequest) { this.staffRequest = staffRequest; }
-    public void setRequestId(int requestId ) { this.requestId = requestId; }
+    public int getId() { return  id; }
+    public String getItemName() { return itemName; }
+    public double getCurrentPrice() { return currentPrice; }
+    public double getProposedPrice() { return proposedPrice; }
+    public String getReason() { return reason;}
 
     @Override
     public String toString() {
-        return "Request ID: " + requestId;
+        return "Price Change Request:" +
+                "ID = " + id +
+                ", Item name: " + itemName + '\'' +
+                ", Current Price: " + currentPrice +
+                ", REASON: " + reason + '\'';
     }
 
 }

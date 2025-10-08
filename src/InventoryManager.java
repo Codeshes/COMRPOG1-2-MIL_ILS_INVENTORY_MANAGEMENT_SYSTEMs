@@ -1,12 +1,28 @@
 import java.util.HashMap;
-
+import java.util.Scanner;
 public class InventoryManager {
     private HashMap<Integer, Items> inventory = new HashMap<>();
+    private Scanner sc = new Scanner(System.in);
 
 
-    public void AddItems(Items item) {
-        inventory.put(item.getItemId(), item);
-        System.out.println("Item added Successfully" + item);
+    public void AddItems() {
+        System.out.print("Enter the Item ID: ");
+        int itemId = sc.nextInt();
+        sc.nextLine();
+
+        System.out.print("Enter the item name ");
+        String itemName = sc.nextLine();
+
+        System.out.print("Enter Price: ");
+        int itemPrice = sc.nextInt();
+        sc.nextLine();
+
+        System.out.print("Enter Item Quantity");
+        int itemQuantity = sc.nextInt();
+
+        Items items = new Items(itemId, itemName, itemPrice, itemQuantity);
+        inventory.put(items.getItemId(), items);
+        System.out.println("Item added Successfully" + items);
     }
 
     public void DisplayItems() {
@@ -16,11 +32,16 @@ public class InventoryManager {
     }
 
     public void RemoveItems(int id) {
-        inventory.remove(id);
-        System.out.println("Item removed.");
+        Items itemToDelete = inventory.remove(id);
+
+        if (itemToDelete != null) {
+            System.out.println("Item removed Successfully...");
+        } else {
+            System.out.println("Item removal failed....");
+        }
     }
 
-    public void SearchElementByIdAndKeyWord(int id, String keyword) {
+    public void SearchElementById(int id, String keyword) {
         // SEARCH BY ELEMENT ID
         Items items = inventory.get(id);
         if (id != items.getItemId()) {
@@ -28,20 +49,19 @@ public class InventoryManager {
         } else {
             System.out.println("ID Found: " + items.getItemName());
         }
+    }
 
-        // SEARCH ELEMENT BY KEYWORD
+    public void SearchElementByKeyword(String keyword) {
         boolean found = false;
         for (Items item : inventory.values()) {
             if (item.getItemName().toLowerCase().contains(keyword.toLowerCase())) {
-                System.out.println("Found: " + item.getItemName() + " | ITEM ID: " + item.getItemId());
+                System.out.println("FOUND!" + item);
                 found = true;
             }
         }
         if (!found) {
-            System.out.println("Item not found check your keyword or the Item not exist");
+            System.out.println("NOT FOUND! " + keyword);
         }
     }
-
-
 
 }

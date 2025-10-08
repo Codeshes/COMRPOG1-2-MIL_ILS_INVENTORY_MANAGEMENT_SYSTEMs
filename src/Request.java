@@ -11,7 +11,7 @@ public class Request {
     public String getStaffRequest() { return staffRequest; }
     public int getRequestId() { return requestId; }
     public void setStaffRequest(String staffRequest) { this.staffRequest = staffRequest; }
-    public void setRequestId(String requestId ) { this.requestId = requestId; }
+    public void setRequestId(int requestId ) { this.requestId = requestId; }
 
     @Override
     public String toString() {

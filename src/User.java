@@ -1,26 +1,25 @@
 public class User {
 
-    private String adminUserName;
-    private String adminUserPassword;
-    private String staffUserName;
-    private String staffUserPassword ;
+    private String userName;
+    private String userPassword;
     private String role;
 
-    User(String adminUserName, String adminUserPassword, String staffUserName, String staffUserPassword, String role) {
-        this.adminUserName = adminUserName;
-        this.adminUserPassword = adminUserPassword;
-        this.staffUserName = staffUserName;
-        this.staffUserPassword = staffUserPassword;
+    User(String userName, String userPassword, String role) {
+        this.userName = userName;
+        this.userPassword = userPassword;
         this.role = role;
     }
 
-    public String getAdminUserName() { return adminUserName; }
-    public String getAdminUserPassword() { return adminUserPassword; }
-    public String getStaffUserName() { return staffUserName; }
-    public String getStaffUserPassword() { return staffUserPassword; }
+    public String getUserName() { return userName; }
+    public String getUserPassword() { return userPassword; }
+    public String getRole() { return  role; }
 
-    public void setAdminUserName(String adminUserName) { this.adminUserName = adminUserName; }
-    public void setAdminUserPassword(String adminUserPassword) { this.adminUserPassword = adminUserPassword; }
-    public void setStaffUserName(String staffUserName) { this.staffUserName = staffUserName; }
-    public void setStaffUserPassword (String staffUserPassword) { this.staffUserPassword = staffUserPassword; }
+    public void setUserName(String userName) { this.userName = userName; }
+    public void setUserPassword(String userPassword) { this.userPassword = userPassword; }
+    public void setRole(String role) { this.role = role; }
+
+    @Override
+    public String toString() {
+        return "Username: " + userName + " | Role: " + role ;
+    }
 }

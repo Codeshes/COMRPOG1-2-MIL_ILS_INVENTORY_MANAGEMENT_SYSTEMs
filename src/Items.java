@@ -21,6 +21,8 @@ public class Items {
     public void setItemPrice(double itemPrice) { this.itemPrice = itemPrice; }
     public void setItemQuantity(int itemQuantity ) { this.itemQuantity = itemQuantity; }
 
+
+    @Override
     public String toString() {
         return "ID: " + itemId + " | Item name: " + itemName + " | Item price: " + itemPrice + " | Item Quantity: " + itemQuantity;
     }

@@ -39,7 +39,7 @@ public class InventoryManager {
         }
 
         if (!found) {
-            System.out.println("Item not found check your keyword or the Item does not exist");
+            System.out.println("Item not found check your keyword or the Item not exist");
         }
 
     }

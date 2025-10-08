@@ -37,11 +37,9 @@ public class InventoryManager {
                 found = true;
             }
         }
-
         if (!found) {
             System.out.println("Item not found check your keyword or the Item not exist");
         }
-
     }
 
 

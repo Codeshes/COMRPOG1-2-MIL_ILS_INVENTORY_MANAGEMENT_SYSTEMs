@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -8,16 +9,27 @@ public class Main {
         staffRequestManager requestManager = new staffRequestManager();
         UserManager manageUser = new UserManager();
 
+
         boolean signupPageRunning = true;
 
         while (signupPageRunning) {
+            int choice = 0;
             System.out.println("\n=== SIGN UP PAGE ===\n" +
                     "    [1]. Login\n" +
                     "    [0]. EXIT   ");
-            System.out.print("Enter your choice: ");
-            int choice = sc.nextInt();
-            sc.nextLine();
-
+            boolean isValid = false;
+            while (!isValid) {
+                try {
+                    System.out.print("Enter your choice: ");
+                    choice = sc.nextInt();
+                    sc.nextLine();
+                    isValid = true;
+                } catch (InputMismatchException e) {
+                    System.out.println("The choice must be a NUMBER");
+                    System.out.println("---------------------------");
+                    sc.nextLine();
+                }
+            }
             switch (choice) {
                 case 1 -> {
                     System.out.print("Enter your username: ");
@@ -62,7 +74,7 @@ public class Main {
     public void adminMenu(UserManager userManager, InventoryManager manageInventory) {
         boolean choiceRunning = true;
         while (choiceRunning) {
-            System.out.println("=== ADMIN MENU");
+            System.out.println("=== ADMIN MENU ===");
             System.out.println("[1]. Add Users");
             System.out.println("[2]. Display Users");
             System.out.println("[3]. Remove Users");
@@ -89,13 +101,17 @@ public class Main {
                     userManager.addUserByAdmin(userName, userPassword, role);
 
                 }
-                case 2 -> userManager.displayUser();
+                case 2 -> {
+                    System.out.println("============= USER'S LIST =============");
+                    userManager.displayUser();
+                }
                 case 3 -> {
                     System.out.println("Enter a username to remove in the user's List");
                     String user = sc.nextLine();
                     userManager.removeUser(user);
                 }
                 case 4 -> {
+                    System.out.println("============= INVENTORY ITEM LIST'S =============");
                     manageInventory.DisplayItems();
                 }
                 case 5 -> {

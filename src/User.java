@@ -23,6 +23,6 @@ public class User {
 
     @Override
     public String toString() {
-        return "ID: " + Id + "Username: " + userName + " | Role: " + role ;
+        return "ID: " + Id + " | Username: " + userName + " | Role: " + role ;
     }
 }

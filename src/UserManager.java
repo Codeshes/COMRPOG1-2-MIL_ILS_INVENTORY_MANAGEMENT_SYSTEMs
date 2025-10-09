@@ -7,7 +7,7 @@ public class UserManager {
 
     UserManager() {
         users = new HashMap<>();
-        addUserByAdmin("HeadAdmin2025", "HeadAdminPass2026", "HeadAdmin");
+        addUserByAdmin("HeadAdmin2025", "HeadAdminPass2026", "ADMIN".toLowerCase());
     }
 
     //Add User
@@ -37,7 +37,7 @@ public class UserManager {
         User user = users.get(userName);
 
         if (user != null && user.getUserPassword().equals(passWord)) {
-            System.out.println("Login Successfully. Welcome");
+            System.out.println("Login Successfully. Welcome " + user.getRole());
             return user.getRole();
         } else {
             System.out.println("Login failed.");

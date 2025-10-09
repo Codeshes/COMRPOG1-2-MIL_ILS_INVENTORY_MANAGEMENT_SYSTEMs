@@ -10,19 +10,19 @@ public class InventoryManager {
         int itemId = sc.nextInt();
         sc.nextLine();
 
-        System.out.print("Enter the item name ");
+        System.out.print("Enter the item name: ");
         String itemName = sc.nextLine();
 
         System.out.print("Enter Price: ");
         int itemPrice = sc.nextInt();
         sc.nextLine();
 
-        System.out.print("Enter Item Quantity");
+        System.out.print("Enter Item Quantity: ");
         int itemQuantity = sc.nextInt();
 
         Items items = new Items(itemId, itemName, itemPrice, itemQuantity);
         inventory.put(items.getItemId(), items);
-        System.out.println("Item added Successfully" + items);
+        System.out.println("Item added Successfully: " + items);
     }
 
     public void DisplayItems() {

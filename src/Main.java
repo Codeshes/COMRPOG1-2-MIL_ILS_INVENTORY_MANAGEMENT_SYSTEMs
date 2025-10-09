@@ -108,4 +108,10 @@ public class Main {
 
 
     }
+
+    public void staffMenu(InventoryManager inventoryManager, Scanner sc, staffRequestManager staffRequestManager) {
+        int staffChoice;
+    }
+
+
 }

@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 public class Main {
     static Scanner sc = new Scanner(System.in);
+
     public static void main(String[] args) {
 
         InventoryManager manager = new InventoryManager();
@@ -32,6 +33,7 @@ public class Main {
             }
             switch (choice) {
                 case 1 -> {
+
                     System.out.print("Enter your username: ");
                     String userName = sc.nextLine();
 
@@ -43,7 +45,7 @@ public class Main {
 
                     if (role.equals("admin")) {
                         mainMethod.adminMenu(manageUser, manager);
-                    } else if (role.equals(users.getRole())){
+                    } else if (role.equals(users.getRole())) {
                         mainMethod.staffMenu(manager, requestManager);
                     } else {
                         System.out.println("Credentials not matched");
@@ -90,15 +92,23 @@ public class Main {
 
             switch (choice) {
                 case 1 -> {
+
                     System.out.print("Enter Username: ");
                     String userName = sc.nextLine();
 
-                    System.out.print("Enter password");
+                    System.out.print("Enter password: ");
                     String userPassword = sc.nextLine();
 
-                    System.out.print("Enter the role. ADMIN/STAFF");
+                    System.out.print("Enter the role. ADMIN/STAFF: ");
                     String role = sc.nextLine();
                     userManager.addUserByAdmin(userName, userPassword, role);
+                        /*
+                        try {
+                            System.out.println("Adding " + users.getID() + " into the system");
+                        } catch(InterruptedException e) {
+
+                        }
+                */
 
                 }
                 case 2 -> {

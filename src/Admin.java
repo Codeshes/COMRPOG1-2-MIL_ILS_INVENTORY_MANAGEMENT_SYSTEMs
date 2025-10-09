@@ -5,7 +5,7 @@ public class Admin {
         if ("Accepted".equalsIgnoreCase(decision)) {
             System.out.println("Ticket accepted");
             return true;
-        } else if ("Rejected".equalsIgnoreCase(decision)) {
+        } else if   ("Rejected".equalsIgnoreCase(decision)) {
             System.out.println("Ticket Rejected.");
             return false;
         } else {

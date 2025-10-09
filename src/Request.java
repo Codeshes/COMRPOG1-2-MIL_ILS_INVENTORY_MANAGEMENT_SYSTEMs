@@ -1,5 +1,5 @@
 public class Request {
-    private static int counter = 100;  // Static counter to generate unique IDs
+    private static int counter = 100;
     private int id;
     private String itemName;
     private double currentPrice;

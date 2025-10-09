@@ -41,7 +41,7 @@ public class InventoryManager {
         }
     }
 
-    public void SearchElementById(int id, String keyword) {
+    public void SearchElementById(int id) {
         // SEARCH BY ELEMENT ID
         Items items = inventory.get(id);
         if (id != items.getItemId()) {

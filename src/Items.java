@@ -1,11 +1,12 @@
 public class Items {
+    private static int counterItemId = 100;
     private int itemId;
     private String itemName;
     private double itemPrice;
     private int itemQuantity;
 
-    Items(int itemId, String itemName, double itemPrice, int itemQuantity) {
-        this.itemId = itemId;
+    Items(String itemName, double itemPrice, int itemQuantity) {
+        this.itemId = counterItemId++;
         this.itemName = itemName;
         this.itemPrice = itemPrice;
         this.itemQuantity = itemQuantity;

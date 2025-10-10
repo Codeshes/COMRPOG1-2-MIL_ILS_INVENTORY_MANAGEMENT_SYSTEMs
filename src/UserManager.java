@@ -1,12 +1,12 @@
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Scanner;
 
 public class UserManager {
-    private HashMap<String, User> users;
+    private LinkedHashMap<String, User> users;
     private Scanner sc = new Scanner(System.in);
 
     UserManager() {
-        users = new HashMap<>();
+        users = new LinkedHashMap<>();
         addUserByAdmin("HeadAdmin2025", "HeadAdminPass2026", "ADMIN".toLowerCase());
     }
 
@@ -15,7 +15,7 @@ public class UserManager {
         User user = new User(userName, userPassword, role);
         users.put(userName, user);
         System.out.println("User added Successfully");
-        System.out.println("USER ID: " + user.getID() + "User added: " + userName + " (" + role + ")");
+        System.out.println("USER ID: " + user.getID() + " User added: " + userName + " (" + role + ")");
     }
 
     public void displayUser() {

@@ -1,18 +1,18 @@
 public class User {
-    private static int counter = 200;
-    private int Id;
+    private static int counterUserId = 200;
+    private final int userId;
     private String userName;
     private String userPassword;
     private String role;
 
     User(String userName, String userPassword, String role) {
-        this.Id = counter++;
+        this.userId = counterUserId++;
         this.userName = userName;
         this.userPassword = userPassword;
         this.role = role;
     }
 
-    public int getID() { return Id; }
+    public int getID() { return userId; }
     public String getUserName() { return userName; }
     public String getUserPassword() { return userPassword; }
     public String getRole() { return  role; }
@@ -23,6 +23,6 @@ public class User {
 
     @Override
     public String toString() {
-        return "ID: " + Id + " | Username: " + userName + " | Role: " + role ;
+        return "ID: " + getID() + " | Username: " + userName + " | Role: " + role ;
     }
 }

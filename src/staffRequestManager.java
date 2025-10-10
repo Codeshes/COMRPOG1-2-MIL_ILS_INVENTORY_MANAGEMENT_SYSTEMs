@@ -1,18 +1,37 @@
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Scanner;
+
 public class staffRequestManager {
 
-    private ArrayList<Request> requests;
+    private LinkedList<Request> requests = new LinkedList<>();
 
-    public staffRequestManager() {
-        requests = new ArrayList<>();
-    }
     public void submitRequest(Request request) {
+        // Price change
         requests.add(request);
         System.out.println("Request sent!");
     }
 
-    public void processRequest(Admin admin){
+    public void viewRequest() {
+        if (requests.isEmpty()) {
+            System.out.println("There are no request today");
+            return;
+        }
+        System.out.println("========================================");
+        System.out.printf("%-5s %-15s %-15s %-15s %-20s%n",
+                "ID", "Item", "Current Price", "Proposed", "Reason");
+        System.out.println("========================================");
+
+        for (Request request : requests) {
+            System.out.printf("%-5d %-15s %-15.2f %-15.2f %-20s%n",
+                    request.getId(),
+                    request.getItemName(),
+                    request.getCurrentPrice(),
+                    request.getProposedPrice(),
+                    request.getReason());
+        }
+    }
+
+    public void processRequest(Admin admin) {
         Scanner sc = new Scanner(System.in);
         for (Request priceChange : requests) {
             System.out.println("Processing request ID" + priceChange.getId());

@@ -6,7 +6,8 @@ public class menuManager {
     static InventoryManager manager = new InventoryManager();
     static staffRequestManager requestManager = new staffRequestManager();
     static UserManager manageUser = new UserManager();
-
+    // Will fix the bug on Accepting request
+    // Will fix the return on the staff menu on case 2
 
     boolean signupPageRunning = true;
 

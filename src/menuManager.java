@@ -145,6 +145,7 @@ public class menuManager {
                             Thread.sleep(700);
                             System.out.println(".");
                         } catch (InterruptedException e) {
+                            //Diko alam kung ano ilalagay ko dito
                         }
                     }
 
@@ -217,7 +218,7 @@ public class menuManager {
                         Thread.sleep(200);
                         System.out.println(".");
                     } catch (InterruptedException e) {
-
+                        //Diko alam kung ano ilalagay ko dito
                     }
                 }
 

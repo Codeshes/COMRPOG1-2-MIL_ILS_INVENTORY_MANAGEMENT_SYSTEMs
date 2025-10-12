@@ -72,28 +72,29 @@ public class menuManager {
     /*====================================================================================*/
 
     boolean isAdminMenuRunning = true;
+
     public void adminMenu(UserManager userManager, InventoryManager manageInventory) {
         int choice;
         while (isAdminMenuRunning) {
             System.out.println("""
-        ==================== ADMIN MENU ====================
-        [1]  Add Users
-        [2]  Display Users
-        [3]  Remove Users
-        -----------------------------------------------------
-                 Manage Inventory Section
-        -----------------------------------------------------
-        [4]  View All Items
-        [5]  Add Item
-        [6]  Remove Item
-        [7]  Search Item by ID
-        [8]  Search Item by Keyword
-        -----------------------------------------------------
-        [9]  View Staff Requests
-        [10] Logout
-        [0]  Exit
-        =====================================================
-        """);
+                    ==================== ADMIN MENU ====================
+                    [1]  Add Users
+                    [2]  Display Users
+                    [3]  Remove Users
+                    -----------------------------------------------------
+                             Manage Inventory Section
+                    -----------------------------------------------------
+                    [4]  View All Items
+                    [5]  Add Item
+                    [6]  Remove Item
+                    [7]  Search Item by ID
+                    [8]  Search Item by Keyword
+                    -----------------------------------------------------
+                    [9]  View Staff Requests
+                    [10] Logout
+                    [0]  Exit
+                    =====================================================
+                    """);
             choice = sc.nextInt();
             sc.nextLine();
 
@@ -158,6 +159,21 @@ public class menuManager {
                     }
 
                 }
+
+                case 10 -> {
+                    System.out.println("Logging out");
+                    for (int i = 0; i > 5; i++) {
+                        try {
+                            Thread.sleep(200);
+                            System.out.println(".");
+                            isAdminMenuRunning = false;
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                            System.out.println("Interrupted");
+                            isAdminMenuRunning = false;
+                        }
+                    }
+                }
                 case 0 -> {
                     try {
                         System.out.print("Exiting Program");
@@ -173,15 +189,14 @@ public class menuManager {
                         isAdminMenuRunning = false;
                     }
                 }
-                case 10 -> {
-                    userManager.logOutMethod();
-                }
+
             }
         }
 
     }
 
     /*====================================================================================*/
+    boolean isStaffMenuRunning = true;
     public void staffMenu(InventoryManager inventoryManager, staffRequestManager staffRequestManager) {
         int staffChoice;
         System.out.println("""
@@ -237,10 +252,21 @@ public class menuManager {
 
             }
             case 3 -> {
-                manageUser.logOutMethod();
+                System.out.println("Logging out");
+                for (int i = 0; i > 5; i++) {
+                    try {
+                        Thread.sleep(200);
+                        System.out.println(".");
+                        isStaffMenuRunning = false;
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                        System.out.println("Interrupted");
+                        isStaffMenuRunning = false;
+                    }
+                }
             }
+
+
         }
-
-
     }
 }

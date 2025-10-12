@@ -49,9 +49,4 @@ public class UserManager {
     }
 
 
-public void logOutMethod() {
-    menuManager managerLogout = new menuManager();
-    managerLogout.menuStart();
-}
-
 }

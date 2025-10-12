@@ -14,9 +14,11 @@ public class menuManager {
     public void menuStart() {
         while (signupPageRunning) {
             int choice = 0;
-            System.out.println("\n=== SIGN UP PAGE ===\n" +
-                    "    [1]. Login\n" +
-                    "    [0]. EXIT   ");
+            System.out.println("""
+                    
+                    === SIGN UP PAGE ===
+                        [1]. Login
+                        [0]. EXIT  \s""");
             boolean isValid = false;
             while (!isValid) {
                 try {
@@ -162,7 +164,7 @@ public class menuManager {
 
                 case 10 -> {
                     System.out.println("Logging out");
-                    for (int i = 0; i > 5; i++) {
+                    for (int i = 0; i < 5; i++) {
                         try {
                             Thread.sleep(200);
                             System.out.println(".");

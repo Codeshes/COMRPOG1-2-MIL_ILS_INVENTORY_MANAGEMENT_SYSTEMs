@@ -59,6 +59,7 @@ public class menuManager {
                         }
                         System.exit(0);
                     } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
                         signupPageRunning = false;
                         System.exit(0);
                     }
@@ -74,19 +75,25 @@ public class menuManager {
     public void adminMenu(UserManager userManager, InventoryManager manageInventory) {
         int choice;
         while (isAdminMenuRunning) {
-            System.out.println("=== ADMIN MENU ===");
-            System.out.println("[1]. Add Users");
-            System.out.println("[2]. Display Users");
-            System.out.println("[3]. Remove Users");
-            System.out.println("=== Manage Inventory Section ===");
-            System.out.println("[4]. View all items");
-            System.out.println("[5]. Add Item");
-            System.out.println("[6]. Remove Items");
-            System.out.println("[7]. Search ITEMS By ID");
-            System.out.println("[8]. Search ITEMS by KEYWORD");
-            System.out.println("[9]. View Request");
-            System.out.println("[10]. LOGOUT");
-            System.out.println("[0]. EXIT");
+            System.out.println("""
+        ==================== ADMIN MENU ====================
+        [1]  Add Users
+        [2]  Display Users
+        [3]  Remove Users
+        -----------------------------------------------------
+                 Manage Inventory Section
+        -----------------------------------------------------
+        [4]  View All Items
+        [5]  Add Item
+        [6]  Remove Item
+        [7]  Search Item by ID
+        [8]  Search Item by Keyword
+        -----------------------------------------------------
+        [9]  View Staff Requests
+        [10] Logout
+        [0]  Exit
+        =====================================================
+        """);
             choice = sc.nextInt();
             sc.nextLine();
 
@@ -145,6 +152,7 @@ public class menuManager {
                             Thread.sleep(700);
                             System.out.println(".");
                         } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
                             //Diko alam kung ano ilalagay ko dito
                         }
                     }
@@ -160,6 +168,7 @@ public class menuManager {
                         isAdminMenuRunning = false;
                         System.exit(0);
                     } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
                         System.exit(0);
                         isAdminMenuRunning = false;
                     }
@@ -175,10 +184,13 @@ public class menuManager {
     /*====================================================================================*/
     public void staffMenu(InventoryManager inventoryManager, staffRequestManager staffRequestManager) {
         int staffChoice;
-        System.out.println("\n=== STAFF MENU ===" +
-                "\n[1]. View Items" + "\n" +
-                "[2]. Edit items (to be approved by admin)" + "\n" +
-                "[3]. LOGOUT");
+        System.out.println("""
+                
+                === STAFF MENU ===\
+                
+                [1]. View Items
+                [2]. Edit items (to be approved by admin)
+                [3]. LOGOUT""");
         staffChoice = sc.nextInt();
         sc.nextLine();
 
@@ -218,7 +230,7 @@ public class menuManager {
                         Thread.sleep(200);
                         System.out.println(".");
                     } catch (InterruptedException e) {
-                        //Diko alam kung ano ilalagay ko dito
+                        Thread.currentThread().interrupt();
                     }
                 }
 

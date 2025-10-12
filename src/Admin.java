@@ -1,5 +1,3 @@
-
-
 public class Admin {
     public boolean reviewRequest(String decision) {
         if ("Accepted".equalsIgnoreCase(decision)) {

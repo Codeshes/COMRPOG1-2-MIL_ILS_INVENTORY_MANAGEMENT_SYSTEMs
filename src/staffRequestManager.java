@@ -12,9 +12,9 @@ public class staffRequestManager {
     }
 
     public void viewRequest() {
+
         if (requests.isEmpty()) {
             System.out.println("There are no request today");
-            return;
         }
         System.out.println("========================================");
         System.out.printf("%-5s %-15s %-15s %-15s %-20s%n",
@@ -29,6 +29,7 @@ public class staffRequestManager {
                     request.getProposedPrice(),
                     request.getReason());
         }
+
     }
 
     public void processRequest(Admin admin) {

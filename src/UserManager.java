@@ -1,13 +1,10 @@
 import java.util.LinkedHashMap;
-import java.util.Scanner;
 
 public class UserManager {
     private LinkedHashMap<String, User> users;
-    private Scanner sc = new Scanner(System.in);
 
     UserManager() {
         users = new LinkedHashMap<>();
-        addUserByAdmin("HeadAdmin2025", "HeadAdminPass2026", "ADMIN".toLowerCase());
     }
 
     //Add User
@@ -23,6 +20,7 @@ public class UserManager {
             System.out.println(user);
         }
     }
+
     public void removeUser(String user) {
         displayUser();
         if (users.containsKey(user)) {
@@ -34,15 +32,26 @@ public class UserManager {
     }
 
     public String loginMethod(String userName, String passWord) {
+        if (userName.equals("HeadAdmin") && passWord.equals("HeadAdminPass")) {
+            System.out.println("Login successful. Welcome Admin");
+            return "admin";
+        }
+
         User user = users.get(userName);
 
         if (user != null && user.getUserPassword().equals(passWord)) {
             System.out.println("Login Successfully. Welcome " + user.getRole());
-            return user.getRole();
+            return user.getRole().toLowerCase();
         } else {
             System.out.println("Login failed.");
             return "none";
         }
     }
+
+
+public void logOutMethod() {
+    menuManager managerLogout = new menuManager();
+    managerLogout.menuStart();
+}
 
 }

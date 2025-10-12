@@ -1,6 +1,9 @@
 public class User {
     private static int counterUserId = 200;
     private final int userId;
+    private final String adminUsername = "HeadAdmin";
+    private final String adminPassword = "HeadAdminPass";
+    private final String roleAdmin = "ADMIN";
     private String userName;
     private String userPassword;
     private String role;

@@ -6,14 +6,15 @@ public class menuManager {
     static InventoryManager manager = new InventoryManager();
     static staffRequestManager requestManager = new staffRequestManager();
     static UserManager manageUser = new UserManager();
+    static int choice;
     // Will fix the bug on Accepting request
     // Will fix the return on the staff menu on case 2
 
     boolean signupPageRunning = true;
 
     public void menuStart() {
+
         while (signupPageRunning) {
-            int choice = 0;
             System.out.println("""
                     
                     === SIGN UP PAGE ===
@@ -34,18 +35,25 @@ public class menuManager {
             }
             switch (choice) {
                 case 1 -> {
-
+                    // ask for username
                     System.out.print("Enter your username: ");
                     String userName = sc.nextLine();
-
+                    // ask for userpassword
                     System.out.print("Enter your password: ");
                     String userPassword = sc.nextLine();
                     String role = manageUser.loginMethod(userName, userPassword);
 
+                    /* if role equals to admin it redirect into adminMenu() and isadminMenuRunning redirect it
+                    * again when logging in again after an log out.
+                    *
+                    * Same as Staff
+                    * */
                     if (role.equals("admin")) {
                         adminMenu(manageUser, manager);
+                        isAdminMenuRunning = true;
                     } else if (role.equals("staff")) {
                         staffMenu(manager, requestManager);
+                        isStaffMenuRunning = true;
                     } else {
                         System.out.println("Credentials not matched");
                     }
@@ -72,7 +80,7 @@ public class menuManager {
     }
 
     /*====================================================================================*/
-
+    // Used in loop
     boolean isAdminMenuRunning = true;
 
     public void adminMenu(UserManager userManager, InventoryManager manageInventory) {
@@ -113,23 +121,26 @@ public class menuManager {
                     userManager.addUserByAdmin(userName, userPassword, role);
 
                 }
-                case 2 -> {
+                case 2 -> { // display the user list
                     System.out.println("============= USER'S LIST =============");
                     userManager.displayUser();
                 }
                 case 3 -> {
+                    // String remove method
                     System.out.println("Enter a username to remove in the user's List");
                     String user = sc.nextLine();
                     userManager.removeUser(user);
                 }
-                case 4 -> {
+                case 4 -> { // Display all the items
                     System.out.println("============= INVENTORY ITEM LIST'S =============");
                     manageInventory.DisplayItems();
                 }
                 case 5 -> {
+                    // add item method
                     manageInventory.AddItems();
                 }
                 case 6 -> {
+                    // delete item via ID
                     System.out.println("Enter an item ID to be DELETED");
                     int id = sc.nextInt();
                     manageInventory.RemoveItems(id);
@@ -140,13 +151,17 @@ public class menuManager {
                     manageInventory.SearchElementById(id);
                 }
                 case 8 -> {
+                    // search via keyword
                     System.out.println("Enter an KEYWORD to search for an ITEM");
                     String keyword = sc.nextLine();
                     manageInventory.SearchElementByKeyword(keyword);
                 }
                 case 9 -> {
+                    // view request
                     requestManager.viewRequest();
+                    // object declaration of admin for the decision of a admin into a one request.
                     Admin admin = new Admin();
+                    // process method for the admin.
                     requestManager.processRequest(admin);
 
                     System.out.println("Returning to ADMIN MENU");
@@ -156,7 +171,6 @@ public class menuManager {
                             System.out.println(".");
                         } catch (InterruptedException e) {
                             Thread.currentThread().interrupt();
-                            //Diko alam kung ano ilalagay ko dito
                         }
                     }
 
@@ -192,6 +206,7 @@ public class menuManager {
                     }
                 }
 
+
             }
         }
 
@@ -199,76 +214,79 @@ public class menuManager {
 
     /*====================================================================================*/
     boolean isStaffMenuRunning = true;
+
     public void staffMenu(InventoryManager inventoryManager, staffRequestManager staffRequestManager) {
         int staffChoice;
-        System.out.println("""
-                
-                === STAFF MENU ===\
-                
-                [1]. View Items
-                [2]. Edit items (to be approved by admin)
-                [3]. LOGOUT""");
-        staffChoice = sc.nextInt();
-        sc.nextLine();
+        while (isStaffMenuRunning) {
+            System.out.println("""
+                    
+                    === STAFF MENU ===\
+                    
+                    [1]. View Items
+                    [2]. Edit items (to be approved by admin)
+                    [3]. LOGOUT""");
+            staffChoice = sc.nextInt();
+            sc.nextLine();
 
-        switch (staffChoice) {
-            case 1 -> {
-                System.out.println("============= INVENTORY ITEM LIST'S =============");
-                inventoryManager.DisplayItems();
-            }
-            case 2 -> {
-                System.out.println("============= INVENTORY ITEM LIST'S =============");
-                inventoryManager.DisplayItems();
-
-                if (inventoryManager.isEmpty()) {
-                    System.out.println("Inventory is EMPTY no ITEM to EDIT");
-                    break;
+            switch (staffChoice) {
+                case 1 -> {
+                    System.out.println("============= INVENTORY ITEM LIST'S =============");
+                    inventoryManager.DisplayItems();
                 }
+                case 2 -> {
+                    System.out.println("============= INVENTORY ITEM LIST'S =============");
+                    inventoryManager.DisplayItems();
 
-                System.out.println("Enter Item name to edit");
-                String itemName = sc.nextLine();
+                    if (inventoryManager.isEmpty()) {
+                        System.out.println("Inventory is EMPTY no ITEM to EDIT");
+                        // return if the inventory are empty
+                        return;
+                    }
+                        // if not it bypasses the if statement and go direct into the userinput
+                    System.out.println("Enter Item name to edit");
+                    String itemName = sc.nextLine();
 
-                System.out.println("Enter current price of the item");
-                double currentPrice = sc.nextInt();
-                sc.nextLine();
+                    System.out.println("Enter current price of the item");
+                    double currentPrice = sc.nextInt();
+                    sc.nextLine();
 
-                System.out.println("Enter the new PRICE of the ITEM");
-                double newPrice = sc.nextInt();
-                sc.nextLine();
+                    System.out.println("Enter the new PRICE of the ITEM");
+                    double proposedPrice = sc.nextInt();
+                    sc.nextLine();
 
-                System.out.println("Enter the reason of Change");
-                String reason = sc.nextLine();
+                    System.out.println("Enter the reason of Change");
+                    String reason = sc.nextLine();
 
-                Request request = new Request(itemName, currentPrice, newPrice, reason);
-                staffRequestManager.submitRequest(request);
-                System.out.println("Submitting request");
-                for (int i = 0; i < 4; i++) {
-                    try {
-                        Thread.sleep(200);
-                        System.out.println(".");
-                    } catch (InterruptedException e) {
-                        Thread.currentThread().interrupt();
+                    Request request = new Request(itemName, currentPrice, proposedPrice, reason);
+                    staffRequestManager.submitRequest(request);
+                    System.out.println("Submitting request");
+                    for (int i = 0; i < 4; i++) {
+                        try {
+                            Thread.sleep(200);
+                            System.out.println(".");
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                        }
+                    }
+
+
+                }
+                case 3 -> {
+                    System.out.println("Logging out");
+                    for (int i = 0; i < 5; i++) {
+                        try {
+                            Thread.sleep(200);
+                            System.out.println(".");
+                            isStaffMenuRunning = false;
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                            System.out.println("Interrupted");
+                            isStaffMenuRunning = false;
+                        }
                     }
                 }
 
-
             }
-            case 3 -> {
-                System.out.println("Logging out");
-                for (int i = 0; i > 5; i++) {
-                    try {
-                        Thread.sleep(200);
-                        System.out.println(".");
-                        isStaffMenuRunning = false;
-                    } catch (InterruptedException e) {
-                        Thread.currentThread().interrupt();
-                        System.out.println("Interrupted");
-                        isStaffMenuRunning = false;
-                    }
-                }
-            }
-
-
         }
     }
 }

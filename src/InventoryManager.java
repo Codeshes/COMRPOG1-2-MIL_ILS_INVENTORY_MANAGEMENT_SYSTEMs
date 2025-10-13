@@ -33,9 +33,7 @@ public class InventoryManager {
         }
     }
 
-    public boolean isEmpty() {
-        return inventory.isEmpty();
-    }
+    public boolean isEmpty() {  return inventory.isEmpty(); }
 
     public void RemoveItems(int id) {
         Items itemToDelete = inventory.remove(id);

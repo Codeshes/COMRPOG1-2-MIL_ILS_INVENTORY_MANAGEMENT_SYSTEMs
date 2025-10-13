@@ -52,9 +52,9 @@ public class staffRequestManager {
         }
     }
 
-    public void updatedItemPrice(Request priceChange) {
-        System.out.println("Price for: " + priceChange.getItemName() +
-                " Updated from" + priceChange.getCurrentPrice() +
-                " to " + priceChange.getProposedPrice());
+    public void updatedItemPrice(Request priceChange1) {
+        System.out.println("Price for: " + priceChange1.getItemName() +
+                " Updated from" + priceChange1.getCurrentPrice() +
+                " to " + priceChange1.getProposedPrice());
     }
 }

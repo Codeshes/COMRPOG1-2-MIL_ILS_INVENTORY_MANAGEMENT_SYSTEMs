@@ -224,7 +224,8 @@ public class menuManager {
                     
                     [1]. View Items
                     [2]. Edit items (to be approved by admin)
-                    [3]. LOGOUT""");
+                    [3]. LOGOUT
+                    [0]. EXIT""");
             staffChoice = sc.nextInt();
             sc.nextLine();
 
@@ -282,6 +283,18 @@ public class menuManager {
                             Thread.currentThread().interrupt();
                             System.out.println("Interrupted");
                             isStaffMenuRunning = false;
+                        }
+                    }
+                }
+                case 0 -> {
+                    System.out.println("Exiting");
+                    for (int i = 0; i < 5; i++) {
+                        try {
+                            Thread.sleep(200); System.out.println(".");
+                            isStaffMenuRunning = false;
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                            isAdminMenuRunning = false;
                         }
                     }
                 }

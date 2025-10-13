@@ -8,7 +8,7 @@ public class menuManager {
     static UserManager manageUser = new UserManager();
     static int choice;
     // Will fix the bug on Accepting request
-    // Will fix the return on the staff menu on case 2
+    
 
     boolean signupPageRunning = true;
 
@@ -161,8 +161,10 @@ public class menuManager {
                     requestManager.viewRequest();
                     // object declaration of admin for the decision of a admin into a one request.
                     Admin admin = new Admin();
+
                     // process method for the admin.
                     requestManager.processRequest(admin);
+
 
                     System.out.println("Returning to ADMIN MENU");
                     for (int i = 0; i < 5; i++) {

@@ -49,12 +49,14 @@ public class staffRequestManager {
             } else {
                 System.out.println("Ticket not Approved! " + priceChange.getId() + decision);
             }
+            InventoryManager managerRequest = new InventoryManager();
+
         }
     }
 
-    public void updatedItemPrice(Request priceChange1) {
-        System.out.println("Price for: " + priceChange1.getItemName() +
-                " Updated from" + priceChange1.getCurrentPrice() +
-                " to " + priceChange1.getProposedPrice());
+    public void updatedItemPrice(Request priceChange) {
+        System.out.println("Price for: " + priceChange.getItemName() +
+                " Updated from" + priceChange.getCurrentPrice() +
+                " to " + priceChange.getProposedPrice());
     }
 }

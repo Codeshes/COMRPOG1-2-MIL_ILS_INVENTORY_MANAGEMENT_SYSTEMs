@@ -68,4 +68,12 @@ public class InventoryManager {
         }
     }
 
+    public void updateItem(int id, double newPrice) {
+        if (inventory.containsKey(id)) {
+            items
+            System.out.println("Updated Successfully");
+        } else {
+            System.out.println("Update not Success");
+        }
+    }
 }

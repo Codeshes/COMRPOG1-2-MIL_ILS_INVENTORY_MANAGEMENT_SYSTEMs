@@ -12,6 +12,7 @@ public class menuManager {
     //SOUT hello hello nats!
     //Hello gello
     // hello hello
+    //MAHAL KITA I WRUV YOU
 
     boolean signupPageRunning = true;
 

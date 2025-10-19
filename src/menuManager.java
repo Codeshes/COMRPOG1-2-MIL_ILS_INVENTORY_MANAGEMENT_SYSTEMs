@@ -8,6 +8,7 @@ public class menuManager {
     static UserManager manageUser = new UserManager();
     static int choice;
     // Will fix the bug on Accepting request
+    // Still not done
     
 
     boolean signupPageRunning = true;
@@ -219,6 +220,7 @@ public class menuManager {
 
     public void staffMenu(InventoryManager inventoryManager, staffRequestManager staffRequestManager) {
         int staffChoice;
+
         while (isStaffMenuRunning) {
             System.out.println("""
                     

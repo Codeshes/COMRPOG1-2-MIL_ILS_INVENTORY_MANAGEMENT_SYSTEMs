@@ -10,6 +10,7 @@ public class menuManager {
     // Will fix the bug on Accepting request
     // Still not done
     //SOUT HELLO NATS
+    //Hello gello
 
     boolean signupPageRunning = true;
 

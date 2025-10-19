@@ -9,7 +9,7 @@ public class menuManager {
     int choice;
     // Will fix the bug on Accepting request
     // Still not done
-    //SOUT hello hello nats!
+    //SOUT ai wruv wryu
     //Hello gello
     // hello hello
 

@@ -3,10 +3,10 @@ import java.util.Scanner;
 
 public class menuManager {
     Scanner sc = new Scanner(System.in);
-    static InventoryManager manager = new InventoryManager();
-    static staffRequestManager requestManager = new staffRequestManager();
-    static UserManager manageUser = new UserManager();
-    static int choice;
+    InventoryManager manager = new InventoryManager();
+    staffRequestManager requestManager = new staffRequestManager();
+    UserManager manageUser = new UserManager();
+    int choice;
     // Will fix the bug on Accepting request
     // Still not done
     
@@ -39,13 +39,13 @@ public class menuManager {
                     // ask for username
                     System.out.print("Enter your username: ");
                     String userName = sc.nextLine();
-                    // ask for userpassword
+                    // ask for userPassword
                     System.out.print("Enter your password: ");
                     String userPassword = sc.nextLine();
                     String role = manageUser.loginMethod(userName, userPassword);
 
-                    /* if role equals to admin it redirect into adminMenu() and isadminMenuRunning redirect it
-                    * again when logging in again after an log out.
+                    /* if role equals to admin it redirect into adminMenu() and isAdminMenuRunning redirect it
+                    * again when logging in again after log out.
                     *
                     * Same as Staff
                     * */
@@ -136,10 +136,7 @@ public class menuManager {
                     System.out.println("============= INVENTORY ITEM LIST'S =============");
                     manageInventory.DisplayItems();
                 }
-                case 5 -> {
-                    // add item method
-                    manageInventory.AddItems();
-                }
+                case 5 -> manageInventory.AddItems();
                 case 6 -> {
                     // delete item via ID
                     System.out.println("Enter an item ID to be DELETED");
@@ -160,7 +157,7 @@ public class menuManager {
                 case 9 -> {
                     // view request
                     requestManager.viewRequest();
-                    // object declaration of admin for the decision of a admin into a one request.
+                    // object declaration of admin for the decision of an admin into a one request.
                     Admin admin = new Admin();
 
                     // process method for the admin.
@@ -247,7 +244,7 @@ public class menuManager {
                         // return if the inventory are empty
                         return;
                     }
-                        // if not it bypasses the if statement and go direct into the userinput
+                        // if not it bypasses the if statement and go direct into the userInput
                     System.out.println("Enter Item name to edit");
                     String itemName = sc.nextLine();
 

@@ -1,10 +1,10 @@
 public class Request {
     private static int counter = 100;
-    private int id;
-    private String itemName;
-    private double currentPrice;
-    private double proposedPrice;
-    private String reason;
+    private final int id;
+    private final String itemName;
+    private final double currentPrice;
+    private final double proposedPrice;
+    private final String reason;
 
 
     Request(String itemName, double currentPrice, double proposedPrice, String reason) {

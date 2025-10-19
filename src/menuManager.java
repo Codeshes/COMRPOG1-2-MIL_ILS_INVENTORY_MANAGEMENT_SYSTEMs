@@ -9,7 +9,7 @@ public class menuManager {
     int choice;
     // Will fix the bug on Accepting request
     // Still not done
-    //SOUT HELLO NATS
+    //SOUT hello hello nats!
     //Hello gello
 
     boolean signupPageRunning = true;

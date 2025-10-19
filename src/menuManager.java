@@ -11,6 +11,7 @@ public class menuManager {
     // Still not done
     //SOUT HELLO NATS
     //Hello gello
+    // hello hello
 
     boolean signupPageRunning = true;
 

@@ -87,7 +87,7 @@ public class menuManager {
     boolean isAdminMenuRunning = true;
 
     public void adminMenu(UserManager userManager, InventoryManager manageInventory) {
-        int choice = 0;
+        int choice;
         while (isAdminMenuRunning) {
             System.out.println("""
                     ==================== ADMIN MENU ====================

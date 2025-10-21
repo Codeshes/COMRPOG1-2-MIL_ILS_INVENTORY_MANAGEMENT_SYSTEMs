@@ -108,8 +108,15 @@ public class menuManager {
                     [0]  Exit
                     =====================================================
                     """);
-            choice = sc.nextInt();
-            sc.nextLine();
+            try {
+                System.out.print("\nEnter your choice: ");
+                choice = sc.nextInt();
+                sc.nextLine();
+            } catch (InputMismatchException e) {
+                Thread.currentThread().interrupt();
+                System.out.println("Choice must be a Number");
+                return;
+            }
 
             switch (choice) {
                 case 1 -> {

@@ -305,6 +305,7 @@ public class menuManager {
                         } catch (InterruptedException e) {
                             Thread.currentThread().interrupt();
                             isAdminMenuRunning = false;
+
                         }
                     }
                 }

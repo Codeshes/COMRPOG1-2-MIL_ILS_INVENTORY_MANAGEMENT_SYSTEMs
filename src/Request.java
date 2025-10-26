@@ -3,7 +3,7 @@ public class Request {
     private final int id;
     private final String itemName;
     private final double currentPrice;
-    private final double proposedPrice;
+    private double proposedPrice;
     private final String reason;
 
 
@@ -13,8 +13,6 @@ public class Request {
         this.currentPrice = currentPrice;
         this.proposedPrice = proposedPrice;
         this.reason = reason;
-
-
     }
 
     public int getId() { return  id; }
@@ -22,6 +20,8 @@ public class Request {
     public double getCurrentPrice() { return currentPrice; }
     public double getProposedPrice() { return proposedPrice; }
     public String getReason() { return reason;}
+
+    public void setProposedPrice(double proposedPrice) { this.proposedPrice = proposedPrice; }
 
     @Override
     public String toString() {
